@@ -17,7 +17,7 @@ module SpreePos
                            :replace => "td:contains('price')",
                            :text => "<td><%=  variant.tax_price %></td>",
                            :disabled => false)
-      if Variant.first and Variant.first.respond_to? :ean
+      if !Variant.nil? and Variant.first and Variant.first.respond_to? :ean
         Deface::Override.new(:virtual_path => "admin/products/_form",
                              :name => "Add ean to product list",
                              :replace => "p:contains('sku')",
